@@ -1,9 +1,15 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# MacOS files
+.DS_Store
 
-## User settings
+# Xcode User settings
 xcuserdata/
+
+# Add this line if you want to avoid checking in source code from the Xcode workspace
+# *.xcworkspace
+
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+*.xcscmblueprint
+*.xccheckout
 
 ## Obj-C/Swift specific
 *.hmap
@@ -13,16 +19,15 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
+## Leave playgrounds checked-in with the project by default, uncomment to remove
+# timeline.xctimeline
+# playground.xcworkspace
 
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 # Package.pins
-# Package.resolved
 # *.xcodeproj
 #
 # Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
@@ -33,30 +38,41 @@ playground.xcworkspace
 
 # CocoaPods
 #
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
+# While some recommend against adding the Pods directory to your .gitignore, Fueled has opted to do so
+# for some of the reasons mentioned here. The Podfile.lock should be included to ensure compatibility:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+
+Pods/
 
 # Carthage
 #
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+# In the event that the project chooses to use Carthage, the build folder should be ignored
 
-Carthage/Build/
+Carthage/Build
 
-# fastlane
+# Swiftlint configuration is required for proper Swiftlint operation
+# .swiftlint.yml
+
+# Bitrise
 #
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
+# Included for debugging purposes
 
+.bitrise-steps
+codesigndoc_exports/
+
+# KMP-related
+
+.env
+
+# Generated
+**/Generated
+
+# Fastlane
+.env.default
 fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
+fastlane/README.md
+fastlane/tests
 fastlane/test_output
+tmp/
+.env.arkana
+ArkanaKeys/
