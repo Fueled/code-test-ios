@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 @MainActor
-final class MarvelHeroesViewModel: ObservableObject {
+class MarvelHeroesViewModel: ObservableObject {
 	private(set) var marvelHeroesNavigation: MarvelHeroesNavigation?
 	@Published private(set) var superHeroes: [MarvelCharacter] = []
 	@Published private(set) var isLoading = false

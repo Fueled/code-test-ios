@@ -13,23 +13,10 @@ struct MarvelHeroDetailsView: View {
 	@StateObject var viewModel: MarvelHeroDetailsViewModel
 
 	var body: some View {
-		VStack(spacing: .zero) {
-			if let character = viewModel.character {
-				MarvelCharacterView(character: character, isDetailView: true)
-					.tint(.black)
-			}
-		}
+		VStack(spacing: .zero) { }
 		.accessibilityIdentifier(UITestIDs.MarvelHeroDetailsView.parent.rawValue)
 		.task {
 			viewModel.setup(navigation: marvelHeroesNavigation)
 		}
 	}
-}
-
-#Preview {
-	MarvelHeroDetailsView(
-		viewModel: MarvelHeroDetailsViewModel(
-			character: MarvelCharacter.example
-		)
-	)
 }

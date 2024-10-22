@@ -11,13 +11,12 @@ import SwiftUI
 
 struct MarvelCharacterView: View {
 	let character: MarvelCharacter
-	let isDetailView: Bool
 
 	var body: some View {
-		ZStack(alignment: isDetailView ? .top : .bottom) {
+		ZStack(alignment: .bottom) {
 			imageView
 				.overlay {
-					Color.black.opacity(isDetailView ? 0.0 : 0.7)
+					Color.black.opacity(0.7)
 				}
 			infoView
 		}
@@ -34,41 +33,45 @@ struct MarvelCharacterView: View {
 				resizingMode: .aspectFill
 			)
 			.frame(maxWidth: .infinity)
-			.frame(height: isDetailView ? 350 : 200)
-			.clipped()
+			.frame(height: 200)
 			.accessibilityLabel(character.name)
 			.accessibilityAddTraits(.isImage)
 		}
 	}
 
 	private var infoView: some View {
-		VStack(spacing: .zero) {
+		VStack() {
 			Spacer()
-				.frame(maxHeight: isDetailView ? 350 : .infinity)
+				.frame(maxHeight: .infinity)
 
-			VStack(alignment: .leading, spacing: 6) {
-				Text(character.name)
-					.font(.title)
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.accessibilityLabel(character.name)
-					.accessibilityAddTraits(.isHeader)
-				let characterDescriptionText = character.description.isEmpty ? Text("No description available") : Text(character.description)
-				characterDescriptionText
-					.font(.subheadline)
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.accessibilityLabel(characterDescriptionText)
-					.accessibilityAddTraits(.isStaticText)
+			HStack() {
+				VStack(alignment: .leading, spacing: 6) {
+					Text(character.name)
+						.font(.title)
+						.frame(maxWidth: .infinity, alignment: .leading)
+						.accessibilityLabel(character.name)
+						.accessibilityAddTraits(.isHeader)
+						.frame(width: 75, height: 10)
+						.clipped()
+					let characterDescriptionText = character.description.isEmpty ? Text("No description available") : Text(character.description)
+					characterDescriptionText
+						.font(.subheadline)
+						.frame(maxWidth: .infinity, alignment: .leading)
+						.lineLimit(6)
+						.accessibilityLabel(characterDescriptionText)
+						.accessibilityAddTraits(.isStaticText)
+						.frame(width: 100)
+				}
+				.foregroundStyle(.tint)
+				.padding(6)
+				Spacer()
 			}
-			.foregroundStyle(.tint)
-			.padding(6)
-			Spacer()
 		}
 	}
 }
 
 #Preview {
 	MarvelCharacterView(
-		character: MarvelCharacter.example,
-		isDetailView: false
+		character: MarvelCharacter.example
 	)
 }

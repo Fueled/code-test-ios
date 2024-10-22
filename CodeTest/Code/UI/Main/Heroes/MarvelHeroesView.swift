@@ -41,7 +41,7 @@ struct MarvelHeroesView: View {
 
 	private var contentView: some View {
 		ScrollView {
-			LazyVStack {
+			VStack {
 				heroesListView
 			}
 		}
@@ -52,7 +52,7 @@ struct MarvelHeroesView: View {
 	private var heroesListView: some View {
 		ForEach(viewModel.superHeroes.indices, id: \.self) { index in
 			let character = viewModel.superHeroes[index]
-			MarvelCharacterView(character: character, isDetailView: false)
+			MarvelCharacterView(character: character)
 				.tint(.white)
 				.accessibilityIdentifier("HeroesListItem\(index)")
 				.onTapGesture {

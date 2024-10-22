@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-final class MarvelHeroesNavigation: NavigationStackManager {
+class MarvelHeroesNavigation: NavigationStackManager {
 	@Published var path: [Path]
 
 	init(path: [Path]) {
@@ -24,9 +24,9 @@ extension MarvelHeroesNavigation {
 		var destination: some View {
 			switch self {
 			case .heroDetails(let character):
-				MarvelHeroDetailsView(viewModel: MarvelHeroDetailsViewModel(character: character))
+				MarvelHeroDetailsView(viewModel: MarvelHeroDetailsViewModel())
 			case .heroDetailsID(let id):
-				MarvelHeroDetailsView(viewModel: MarvelHeroDetailsViewModel(id: id))
+				MarvelHeroDetailsView(viewModel: MarvelHeroDetailsViewModel())
 			}
 		}
 	}
