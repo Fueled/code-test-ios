@@ -28,8 +28,8 @@ final class MarvelCharacterListTests: XCTestCase {
 		}
 		""".data(using: .utf8)!
 		
-		let characterList = try! JSONDecoder().decode(MarvelCharacterList.self, from: json)
-		
+		let characterList = try! JSONDecoder().decode([MarvelCharacter].self, from: json)
+
 		XCTAssertNotNil(characterList)		
 	}
 }
