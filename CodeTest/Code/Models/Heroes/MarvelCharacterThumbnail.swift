@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MarvelCharacterThumbnail: Codable, Hashable {
+public class MarvelCharacterThumbnail: Codable {
 	enum CodingKeys: String, CodingKey {
 		case path
 		case ext = "extension"
@@ -19,5 +19,16 @@ public struct MarvelCharacterThumbnail: Codable, Hashable {
 	public init(path: String?, ext: String?) {
 		self.path = path
 		self.ext = ext
+	}
+}
+
+extension MarvelCharacterThumbnail: Hashable {
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(path)
+		hasher.combine(ext)
+	}
+
+	public static func == (lhs: MarvelCharacterThumbnail, rhs: MarvelCharacterThumbnail) -> Bool {
+		lhs.ext == rhs.ext && lhs.path == rhs.path
 	}
 }

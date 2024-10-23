@@ -17,6 +17,7 @@ class MarvelHeroesViewModel: ObservableObject {
 		print("Loading data for fetchMarvelHeroes")
 		do {
 			isLoading = true
+			//TODO: Integrate with the Marvels API instead of loading data from the Sample.json file
 			if let samplePath = Bundle.main.path(forResource: "Sample", ofType: "json") {
 				let sampleData = try Data(contentsOf: URL(fileURLWithPath: samplePath))
 				superHeroes = try JSONDecoder().decode([MarvelCharacter].self, from: sampleData)
