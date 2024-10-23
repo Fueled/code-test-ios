@@ -17,13 +17,3 @@ struct CodeTestApp: App {
 		}
 	}
 }
-
-//struct UITestingView: View {
-//	var body: some View {
-//		withDependencies {
-//			$0.marvelHeroesService = MarvelHeroesService.previewValue
-//		} operation: {
-//			MarvelHeroesView()
-//		}
-//	}
-//}

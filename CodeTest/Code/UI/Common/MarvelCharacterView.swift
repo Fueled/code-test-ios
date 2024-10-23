@@ -6,7 +6,6 @@
 //  Copyright © 2024 Fueled. All rights reserved.
 //
 
-import NukeUI
 import SwiftUI
 
 struct MarvelCharacterView: View {
@@ -16,30 +15,28 @@ struct MarvelCharacterView: View {
 		ZStack(alignment: .bottom) {
 			imageView
 				.overlay {
-					Color.black.opacity(0.7)
+					Color.black.opacity(0.3)
 				}
 			infoView
 		}
 	}
 
 	@ViewBuilder
-	private var imageView: some View {
+	var imageView: some View {
 		if
 			let urlString = character.imageString,
 			let url = URL(string: urlString)
 		{
-			LazyImage(
-				source: ImageRequest(url: url),
-				resizingMode: .aspectFill
-			)
+			AsyncImage(url: url)
 			.frame(maxWidth: .infinity)
 			.frame(height: 200)
 			.accessibilityLabel(character.name)
 			.accessibilityAddTraits(.isImage)
+			.clipped()
 		}
 	}
 
-	private var infoView: some View {
+	var infoView: some View {
 		VStack() {
 			Spacer()
 				.frame(maxHeight: .infinity)
@@ -48,10 +45,8 @@ struct MarvelCharacterView: View {
 				VStack(alignment: .leading, spacing: 6) {
 					Text(character.name)
 						.font(.title)
-						.frame(maxWidth: .infinity, alignment: .leading)
 						.accessibilityLabel(character.name)
 						.accessibilityAddTraits(.isHeader)
-						.frame(width: 75, height: 10)
 						.clipped()
 					let characterDescriptionText = character.description.isEmpty ? Text("No description available") : Text(character.description)
 					characterDescriptionText
@@ -60,7 +55,6 @@ struct MarvelCharacterView: View {
 						.lineLimit(6)
 						.accessibilityLabel(characterDescriptionText)
 						.accessibilityAddTraits(.isStaticText)
-						.frame(width: 100)
 				}
 				.foregroundStyle(.tint)
 				.padding(6)

@@ -13,8 +13,8 @@ public struct MarvelCharacterThumbnail: Codable, Hashable {
 		case path
 		case ext = "extension"
 	}
-	public let path: String?
-	public let ext: String?
+	public var path: String?
+	public var ext: String?
 
 	public init(path: String?, ext: String?) {
 		self.path = path

@@ -1,5 +1,5 @@
 {
-  "originHash" : "04bf343783c324244c988cfef4880ad8ed0efaf633eeff81bbb6e064a2687d86",
+  "originHash" : "7425610daf440190f4727cfdc3e3e2bc4d1d1647ad837f63414243dd5b8d619b",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,33 +8,6 @@
       "state" : {
         "revision" : "9fa31f4403da54855f1e2aeaeff478f4f0e40b13",
         "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "gifu",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kaishin/Gifu",
-      "state" : {
-        "revision" : "82da0086dea14ca9afc9801234ad8dc4cd9e2738",
-        "version" : "3.4.1"
-      }
-    },
-    {
-      "identity" : "nuke",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/Nuke.git",
-      "state" : {
-        "revision" : "a002b7fd786f2df2ed4333fe73a9727499fd9d97",
-        "version" : "10.11.2"
-      }
-    },
-    {
-      "identity" : "nukeui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/NukeUI.git",
-      "state" : {
-        "revision" : "db55022a8e483774ebbf3568727071477546d9ea",
-        "version" : "0.8.3"
       }
     },
     {
