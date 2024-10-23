@@ -7,7 +7,7 @@
 //
 
 import Combine
-import Dependencies
+import Foundation
 
 @MainActor
 final class MarvelHeroesViewModel: ObservableObject {
@@ -23,8 +23,11 @@ final class MarvelHeroesViewModel: ObservableObject {
 		print("Loading data for fetchMarvelHeroes")
 		do {
 			isLoading = true
-			@Dependency(\.marvelHeroesService) var marvelHeroesService
-			superHeroes = try await marvelHeroesService.fetchMarvelHeroes()
+
+			if let samplePath = Bundle.main.path(forResource: "Sample", ofType: "json") {
+				let sampleData = try Data(contentsOf: URL(fileURLWithPath: samplePath))
+				superHeroes = try JSONDecoder().decode([MarvelCharacter].self, from: sampleData)
+			}
 		} catch {
 			print("ERROR: \(error)")
 		}

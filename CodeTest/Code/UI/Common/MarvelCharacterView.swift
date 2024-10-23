@@ -43,14 +43,9 @@ struct MarvelCharacterView: View {
 
 	private var infoView: some View {
 		VStack(spacing: .zero) {
-//			if isDetailView {
-//				Spacer()
-//					.frame(height: 350)
-//			} else {
-				Spacer()
+			Spacer()
 				.frame(maxHeight: isDetailView ? 350 : .infinity)
 
-//			}
 			VStack(alignment: .leading, spacing: 6) {
 				Text(character.name)
 					.font(.title)

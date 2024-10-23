@@ -9,10 +9,10 @@
 import Foundation
 
 public struct MarvelCharacter: Codable, Hashable {
-	public let name: String
-	public let id: Int
-	public let description: String
-	public let thumbnail: MarvelCharacterThumbnail
+	public var name: String
+	public var id: Int
+	public var description: String
+	public var thumbnail: MarvelCharacterThumbnail
 
 	public var imageString: String? {
 		guard let path = thumbnail.path, let ext = thumbnail.ext else {
