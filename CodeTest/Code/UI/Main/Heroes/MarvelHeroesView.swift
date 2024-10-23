@@ -20,11 +20,7 @@ struct MarvelHeroesView: View {
 
 	@ViewBuilder
 	var rootView: some View {
-		if viewModel.isLoading {
-			ProgressView()
-		} else {
-			contentView
-		}
+		contentView
 	}
 
 	var contentView: some View {
