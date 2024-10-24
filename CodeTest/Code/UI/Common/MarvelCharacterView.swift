@@ -1,74 +1,73 @@
 //
 //  MarvelCharacterView.swift
-// CodeTest
+//  CodeTest
 //
 //  Created by Samuel Skelton on 18 October, 2024.
 //  Copyright © 2024 Fueled. All rights reserved.
 //
 
-import NukeUI
 import SwiftUI
 
 struct MarvelCharacterView: View {
 	let character: MarvelCharacter
-	let isDetailView: Bool
 
 	var body: some View {
-		ZStack(alignment: isDetailView ? .top : .bottom) {
-			imageView
-				.overlay {
-					Color.black.opacity(isDetailView ? 0.0 : 0.7)
-				}
-			infoView
+		VStack(spacing: 0) {
+			ZStack(alignment: .bottom) {
+				imageView
+					.overlay {
+						Color.black.opacity(0.3)
+					}
+				infoView
+			}
 		}
 	}
 
 	@ViewBuilder
-	private var imageView: some View {
+	var imageView: some View {
 		if
 			let urlString = character.imageString,
 			let url = URL(string: urlString)
 		{
-			LazyImage(
-				source: ImageRequest(url: url),
-				resizingMode: .aspectFill
-			)
+			AsyncImage(url: url)
 			.frame(maxWidth: .infinity)
-			.frame(height: isDetailView ? 350 : 200)
-			.clipped()
+			.frame(height: 200)
 			.accessibilityLabel(character.name)
 			.accessibilityAddTraits(.isImage)
+			.clipped()
 		}
 	}
 
-	private var infoView: some View {
-		VStack(spacing: .zero) {
+	var infoView: some View {
+		VStack() {
 			Spacer()
-				.frame(maxHeight: isDetailView ? 350 : .infinity)
+				.frame(maxHeight: .infinity)
 
-			VStack(alignment: .leading, spacing: 6) {
-				Text(character.name)
-					.font(.title)
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.accessibilityLabel(character.name)
-					.accessibilityAddTraits(.isHeader)
-				let characterDescriptionText = character.description.isEmpty ? Text("No description available") : Text(character.description)
-				characterDescriptionText
-					.font(.subheadline)
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.accessibilityLabel(characterDescriptionText)
-					.accessibilityAddTraits(.isStaticText)
+			HStack() {
+				VStack(alignment: .leading, spacing: 6) {
+					Text(character.name)
+						.font(.title)
+						.accessibilityLabel(character.name)
+						.accessibilityAddTraits(.isHeader)
+						.clipped()
+					let characterDescriptionText = character.description.isEmpty ? Text("No description available") : Text(character.description)
+					characterDescriptionText
+						.font(.subheadline)
+						.frame(maxWidth: .infinity, alignment: .leading)
+						.lineLimit(6)
+						.accessibilityLabel(characterDescriptionText)
+						.accessibilityAddTraits(.isStaticText)
+				}
+				.foregroundStyle(.tint)
+				.padding(6)
+				Spacer()
 			}
-			.foregroundStyle(.tint)
-			.padding(6)
-			Spacer()
 		}
 	}
 }
 
 #Preview {
 	MarvelCharacterView(
-		character: MarvelCharacter.example,
-		isDetailView: false
+		character: MarvelCharacter.example
 	)
 }

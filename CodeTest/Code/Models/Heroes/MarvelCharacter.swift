@@ -1,6 +1,6 @@
 //
 //  MarvelCharacter.swift
-// CodeTest
+//  CodeTest
 //
 //  Created by Samuel Skelton on 18 October, 2024.
 //  Copyright © 2024 Fueled. All rights reserved.
@@ -8,17 +8,18 @@
 
 import Foundation
 
-public struct MarvelCharacter: Codable, Hashable {
+public class MarvelCharacter: Codable, Hashable {
 	public var name: String
 	public var id: Int
 	public var description: String
 	public var thumbnail: MarvelCharacterThumbnail
 
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
+	}
+
 	public var imageString: String? {
-		guard let path = thumbnail.path, let ext = thumbnail.ext else {
-			return nil
-		}
-		return path + "." + ext
+		return thumbnail.path! + "." + thumbnail.ext!
 	}
 
 	public init(name: String, id: Int, description: String, thumbnail: MarvelCharacterThumbnail) {
