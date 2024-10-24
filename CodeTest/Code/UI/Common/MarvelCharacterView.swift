@@ -12,12 +12,14 @@ struct MarvelCharacterView: View {
 	let character: MarvelCharacter
 
 	var body: some View {
-		ZStack(alignment: .bottom) {
-			imageView
-				.overlay {
-					Color.black.opacity(0.3)
-				}
-			infoView
+		VStack(spacing: 0) {
+			ZStack(alignment: .bottom) {
+				imageView
+					.overlay {
+						Color.black.opacity(0.3)
+					}
+				infoView
+			}
 		}
 	}
 

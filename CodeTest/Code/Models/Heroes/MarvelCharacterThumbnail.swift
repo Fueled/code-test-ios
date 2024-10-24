@@ -20,6 +20,18 @@ public class MarvelCharacterThumbnail: Codable {
 		self.path = path
 		self.ext = ext
 	}
+
+	public func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(path, forKey: .path)
+		try container.encode(ext, forKey: .ext)
+	}
+
+	required public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		path = try container.decode(String?.self, forKey: .path)
+		ext = try container.decode(String?.self, forKey: .ext)
+	}
 }
 
 extension MarvelCharacterThumbnail: Hashable {

@@ -104,7 +104,6 @@
 			children = (
 				13FAA2FC2CC8FBE600C85E6D /* Dependencies */,
 				549B0B672CC159D400B75832 /* Application */,
-				5461272F2CC2AF20006A4BA9 /* Helpers */,
 				546126FB2CC29E14006A4BA9 /* Models */,
 				549B0B612CC159D400B75832 /* UI */,
 				549B0B4C2CC1596D00B75832 /* Preview Content */,
@@ -120,13 +119,6 @@
 				543A85AC2CC6CEBB009260CF /* Sample.json */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		5461272F2CC2AF20006A4BA9 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		549B0B3A2CC1596C00B75832 = {
