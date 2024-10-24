@@ -19,10 +19,7 @@ public class MarvelCharacter: Codable, Hashable {
 	}
 
 	public var imageString: String? {
-		guard let path = thumbnail.path, let ext = thumbnail.ext else {
-			return nil
-		}
-		return path + "." + ext
+		return thumbnail.path! + "." + thumbnail.ext!
 	}
 
 	public init(name: String, id: Int, description: String, thumbnail: MarvelCharacterThumbnail) {
